@@ -44,9 +44,7 @@ if __name__ == '__main__':
     # priority 0
     parser.add_argument('-c', '--config', default="/home/robot/桌面/UVTS^2-main/Cloud_MLSNet/rtdetrv2_pytorch/configs/rtdetrv2/MLSNet.yml", type=str, required=False)
     parser.add_argument('-r', '--resume', type=str)
-    parser.add_argument('-t', '--tuning', type=str,
-                        # default='/home/robot/RT-DETR-main/RT-DETR-main/rtdetrv2_r18vd_120e_coco_rerun_48.1 (1).pth', help='tuning from checkpoint')
-                            default = None, help = 'tuning from checkpoint')
+    parser.add_argument('-t', '--tuning', type=str, default = None, help = 'tuning from checkpoint')
     parser.add_argument('-d', '--device', type=str, help='device',)
     parser.add_argument('--seed', type=int, help='exp reproducibility')
     parser.add_argument('--use-amp', action='store_true', help='auto mixed precision training')
