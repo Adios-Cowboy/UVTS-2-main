@@ -1,0 +1,48 @@
+task: detection
+
+evaluator:
+  type: CocoEvaluator
+  iou_types: ['bbox', ]
+
+# num_classes: 365
+# remap_mscoco_category: False
+#
+#num_classes: 80
+#remap_mscoco_category: True
+
+num_classes: 12
+remap_mscoco_category: False
+
+
+train_dataloader: 
+  type: DataLoader
+  dataset: 
+    type: CocoDetection
+    img_folder: /home/robot/RUOD/RUOD_COCO/train2017/
+    ann_file: /home/robot/RUOD/RUOD_COCO/annotations/instances_train2017.json
+    return_masks: False
+    transforms:
+      type: Compose
+      ops: ~
+  shuffle: True
+  num_workers: 4
+  drop_last: True 
+  collate_fn:
+    type: BatchImageCollateFuncion
+
+
+val_dataloader:
+  type: DataLoader
+  dataset: 
+    type: CocoDetection
+    img_folder: /home/robot/RUOD/RUOD_COCO/val2017/
+    ann_file: /home/robot/RUOD/RUOD_COCO/annotations/instances_val2017.json
+    return_masks: False
+    transforms:
+      type: Compose
+      ops: ~
+  shuffle: False
+  num_workers: 4
+  drop_last: False
+  collate_fn:
+    type: BatchImageCollateFuncion
